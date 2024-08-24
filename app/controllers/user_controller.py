@@ -6,22 +6,19 @@ from app.utils.validations_manger import Validations_manager
 class UserController(View):
 
     async def dispatch_request(self):
+        
         if request.method == "POST":
             jsonData = request.get_json()
 
-            validations_manager = Validations_manager(
-                jsonData["user_name"],
-                jsonData["email"],
-                jsonData["password"]
-            )
+            validations_manager = Validations_manager(jsonData)
 
-            validations_response = validations_manager.validate()
+            validations_response = await validations_manager.validate()
 
             if not validations_response["success"]:
-                return jsonify(validations_response)
+                return jsonify(validations_response), 400
+            
+            register_response = await User.add_user(jsonData);
 
-            register_response = await User.add_user(jsonData)
-
-            return jsonify(register_response)
+            return jsonify(register_response), 200
 
         return "error"
