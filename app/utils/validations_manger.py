@@ -19,13 +19,13 @@ class Validations_manager():
         email_is_valid = self.email_validation();
         password_is_valid = self.password_validation();
 
-        if (user_name_is_valid["success"] == False):
+        if not user_name_is_valid["success"]:
             return user_name_is_valid;
         
-        if (email_is_valid["success"] == False):
+        if not email_is_valid["success"]:
             return email_is_valid;
         
-        if (password_is_valid["success"] == False):
+        if not password_is_valid["success"]:
             return password_is_valid;
         
         return {
@@ -39,7 +39,7 @@ class Validations_manager():
             return {
                 "success": False,
                 "messages": [
-                    "nome precisa ter no mínimo 8 caracteres"
+                    "nome precisa ter no mínimo 8 caracteres."
                 ]
             };
     
@@ -54,7 +54,7 @@ class Validations_manager():
             return {
                 "success": False,
                 "messages": [
-                    "email não e valido"
+                    "email não e valido."
                 ]
             };
 
@@ -69,7 +69,7 @@ class Validations_manager():
             return {
                 "success": False,
                 "messages": [
-                    "senha precisa ter no mínimo 8 caracteres"
+                    "senha precisa ter no mínimo 8 caracteres."
                 ]
             };
         
