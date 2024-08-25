@@ -1,14 +1,21 @@
-from app.controllers.user_controller import UserController
+from app.controllers.user_register_controller import UserRegisterController;
+from app.controllers.user_login_controller import UserLoginController;
 from flask import Flask
 
 app = Flask(__name__);
 
 @app.route("/")
 def home():
-    return "Hello World"
+    return "Hello World";
 
 app.add_url_rule(
-    "/user",
-    view_func=UserController.as_view("user_post"),
-    methods=["POST"]
-)
+    "/user/register",
+    view_func=UserRegisterController.as_view("user_post"),
+    methods=["POST"],
+);
+
+app.add_url_rule(
+    "/user/login",
+    view_func=UserLoginController.as_view("user_login"),
+    methods = ["POST"],
+);

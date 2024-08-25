@@ -9,6 +9,6 @@ def crypt_password(password: str) -> bytes:
 
 def check_password(password: str, passwordHashed: str) -> bool:
     return checkpw(
-        password,
-        passwordHashed
+        password=password.encode("utf-8"),
+        hashed_password=passwordHashed.encode("utf-8"),
     );
