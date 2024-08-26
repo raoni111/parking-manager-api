@@ -101,6 +101,7 @@ class User():
         try:
             user_query = user_ref.where(filter=FieldFilter("email", "==", email));
             docs = user_query.get();
+            
             return docs[0].exists;
         except:
             return False;
