@@ -6,7 +6,7 @@ from google.cloud.firestore_v1 import FieldFilter;
 from datetime import datetime;
 
 class User():
-    
+
     @staticmethod
     async def add_user(user: Dict[str, str]) -> Dict[str, bool | List[str]]:
         user_ref = db.collection("users");
@@ -21,7 +21,7 @@ class User():
         try:
             user_ref.add(user);
 
-            return {
+            return  {
                 "success": True,
                 "message": [
                     "registro efetuado com sucesso.",

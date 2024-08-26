@@ -1,7 +1,7 @@
 from flask.views import View;
 from flask import request, jsonify;
 from app.models.user import User;
-from app.utils.validations_manger import Validations_manager;
+from app.utils.user_validation_manager import User_Validations_Manager;
 
 class UserRegisterController(View):
 
@@ -10,9 +10,9 @@ class UserRegisterController(View):
         if request.method == "POST":
             jsonData = request.get_json();
 
-            validations_manager = Validations_manager(jsonData);
+            validations_manager = User_Validations_Manager(jsonData);
 
-            validations_response = await validations_manager.validate();
+            validations_response = await validations_manager.validate_register();
 
             if not validations_response["success"]:
                 return jsonify(validations_response), 400;

@@ -1,6 +1,6 @@
 from flask.views import View;
 from flask import request;
-from app.utils.validations_manger import Validations_manager;
+from app.utils.user_validation_manager import User_Validations_Manager;
 from app.models.user import User;
 
 class UserLoginController(View):
@@ -11,7 +11,7 @@ class UserLoginController(View):
 
             jsonData = request.get_json();
             
-            validations_manager = Validations_manager(jsonData);
+            validations_manager = User_Validations_Manager(jsonData);
             validation_response = await validations_manager.validate_login();
 
             if not validation_response["success"]:
