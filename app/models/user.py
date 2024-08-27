@@ -16,21 +16,21 @@ class User():
         date = datetime.now().strftime("%d/%m/%Y, %H:%M:%S");
 
         user["created_at"] = date;
-        user["update_at"] = date;
+        user["updated_at"] = date;
 
         try:
             user_ref.add(user);
 
             return  {
                 "success": True,
-                "message": [
+                "messages": [
                     "registro efetuado com sucesso.",
                 ]
             }
         except:
             return {
                 "success": False,
-                "message": [
+                "messages": [
                     "não foi possível registrar o seu dados.",
                 ]
             }
@@ -45,7 +45,7 @@ class User():
         except IndexError:
             return  {
                 "success": False,
-                "messages": [
+                "messagess": [
                     "email ou senha invalido!"
                 ]
             }
@@ -53,7 +53,7 @@ class User():
         if not doc.exists:
             return {
                 "success": False,
-                "message": [
+                "messages": [
                     "usuário não encontrado.",
                 ],
             }
@@ -65,7 +65,7 @@ class User():
         if not password_valid:
             return {
                 "success": False,
-                "messages": [
+                "messagess": [
                     "email ou senha invalido!"
                 ]
             }
@@ -75,7 +75,7 @@ class User():
             "user_name": doc_dict["user_name"],
             "email": doc_dict["email"],
             "created_at": doc_dict["created_at"],
-            "update_at": doc_dict["update_at"],
+            "update_at": doc_dict["updated_at"],
         };
     
         user_token = gen_jwt(database_user);
@@ -84,7 +84,7 @@ class User():
     
         return {
             "success": True,
-            "message": [
+            "messages": [
                 "login efetuado com sucesso"
             ],
             "user": database_user,
