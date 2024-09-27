@@ -34,3 +34,19 @@ class Parking():
                     "Não foi possível registrar os dados do estacionamento."
                 ]
             };
+
+    @staticmethod
+    async def get():
+        parking_ref = db.collection("parking");
+
+        try:
+            response = parking_ref.get();
+        
+            return response;
+        except:
+            return {
+                "success": False,
+                "messages": [
+                    "Não foi possível encontrar estacionamentos"
+                ]
+            }

@@ -45,7 +45,7 @@ class User():
         except IndexError:
             return  {
                 "success": False,
-                "messagess": [
+                "messages": [
                     "email ou senha invalido!"
                 ]
             }
@@ -65,7 +65,7 @@ class User():
         if not password_valid:
             return {
                 "success": False,
-                "messagess": [
+                "messages": [
                     "email ou senha invalido!"
                 ]
             }
