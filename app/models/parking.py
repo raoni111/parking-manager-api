@@ -35,6 +35,25 @@ class Parking():
                 ]
             };
 
+    async def update(parking: Dict[str, str], parkingId: str):
+        parking_ref = db.collection(f'parking/{parkingId}');
+
+        date = datetime.now().strftime("%d/%m/%Y, %H:%M:%S");
+        
+        parking["update_at"] = date;
+    
+        try:
+            parking_ref
+        except: 
+            return {
+                "success": False,
+                "messages": [
+                    
+                ]
+            }
+
+        
+
     @staticmethod
     async def get():
         parking_ref = db.collection("parking");
